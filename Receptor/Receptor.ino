@@ -24,11 +24,6 @@ AF_DCMotor M2(2);
 AF_DCMotor M3(3);
 AF_DCMotor M4(4);
 
-// Armazena as mensagens recebidas.
-byte mensagem[VW_MAX_MESSAGE_LEN];
-// Armazena o tamanho das mensagens.
-byte tamanhoMensagem = VW_MAX_MESSAGE_LEN;
-
 void setup() {
   Serial.begin(9600);
 
@@ -38,6 +33,11 @@ void setup() {
 }
 
 void loop() {
+  // Armazena as mensagens recebidas.
+  byte mensagem[VW_MAX_MESSAGE_LEN] = { PARADO };
+  // Armazena o tamanho das mensagens.
+  byte tamanhoMensagem = VW_MAX_MESSAGE_LEN;
+
   if (vw_get_message(mensagem, &tamanhoMensagem)) {
     Serial.print("Recebido: ");
     for (int i = 0; i < tamanhoMensagem; i++)
@@ -86,24 +86,24 @@ void andarParaFrente() {
 }
 
 void andarParaTras() {
-  ligarMotorParaTras(&M1, 200);
-  ligarMotorParaTras(&M2, 200);
-  ligarMotorParaTras(&M3, 200);
-  ligarMotorParaTras(&M4, 200);
+  ligarMotorParaTras(&M1, 150);
+  ligarMotorParaTras(&M2, 150);
+  ligarMotorParaTras(&M3, 150);
+  ligarMotorParaTras(&M4, 150);
 }
 
 void virarParaDireita() {
-  ligarMotorParaTras(&M1, 150);
-  ligarMotorParaTras(&M2, 150);
-  ligarMotorParaFrente(&M3, 150);
-  ligarMotorParaFrente(&M4, 150);
+  ligarMotorParaFrente(&M1, 200);
+  ligarMotorParaFrente(&M2, 200);
+  desligarMotor(&M3);
+  desligarMotor(&M4);
 }
 
 void virarParaEsquerda() {
-  ligarMotorParaFrente(&M1, 150);
-  ligarMotorParaFrente(&M2, 150);
-  ligarMotorParaTras(&M3, 150);
-  ligarMotorParaTras(&M4, 150);
+  desligarMotor(&M1);
+  desligarMotor(&M2);
+  ligarMotorParaFrente(&M3, 200);
+  ligarMotorParaFrente(&M4, 200);
 }
 
 void desligarMotor(AF_DCMotor *motor) {
