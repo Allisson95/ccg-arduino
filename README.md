@@ -26,5 +26,7 @@ O projeto consiste em um carrinho controlado por gestos da mão.
 
 ## Material de apoio
 [**Tutorial: Acelerômetro MPU6050 com Arduino**](https://www.filipeflop.com/blog/tutorial-acelerometro-mpu6050-arduino/)
+
 [**Comunicação Wireless com Módulo RF 433MHz**](https://www.filipeflop.com/blog/modulo-rf-transmissor-receptor-433mhz-arduino/)
+
 [**Controle Motor DC 12v com Arduino Motor Shield L293D**](https://www.filipeflop.com/blog/controle-motor-dc-arduino-motor-shield/)
